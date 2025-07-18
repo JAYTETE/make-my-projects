@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
 
   <style>
@@ -33,13 +34,13 @@
       border-left: 5px solid #4e73df;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
     }
 
     .data-card:hover {
       transform: scale(1.02);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     }
 
     .data-card h3 {
@@ -69,6 +70,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>📊 Student Data Dashboard</h1>
@@ -80,7 +82,7 @@
   <script>
     const dashboard = document.getElementById("dashboard");
 
-    fetch("https://opensheet.vercel.app/1kOgFaoz8dT6J2vAtMcUxgi9-GuLilJORQaT836QHwow/Sheet1")
+    fetch("https://opensheet.vercel.app/1qb5fAw1mgYopnXOflY7Jl267EjZWh1NgbutLrPwvyYg/Sheet1")
       .then(res => res.json())
       .then(data => {
         if (data.length === 0) {
@@ -93,11 +95,16 @@
           card.className = "data-card";
 
           card.innerHTML = `
-            <h3>👤 ${item.Name || "No Name"}</h3>
-            <p><span class="emoji">📧</span><strong>Email:</strong> ${item.Email || "N/A"}</p>
-            <p><span class="emoji">📝</span><strong>Subject:</strong> ${item.Subject || "N/A"}</p>
-            <p><span class="emoji">💬</span><strong>Message:</strong> ${item.Message || "N/A"}</p>
-          `;
+                          <h3>👤 ${item.Name || "No Name"}</h3>
+                          <p><span class="emoji">📞</span><strong>Phone:</strong> ${item.Phone || "N/A"}</p>
+                          <p><span class="emoji">📍</span><strong>Location:</strong> ${item.Location || "N/A"}</p>
+                          <p><span class="emoji">💬</span><strong>Project Type:</strong> ${item["Project Type"] || "N/A"}</p>
+                          <p><span class="emoji">🧠</span><strong>Project Name:</strong> ${item["Project Name"] || "N/A"}</p>
+                          <p><span class="emoji">📦</span><strong>Requirements:</strong> ${item.Requirements || "N/A"}</p>
+                          <p><span class="emoji">📝</span><strong>Details:</strong> ${item.Details || "N/A"}</p>
+                          <p><span class="emoji">💰</span><strong>Budget:</strong> ${item.Budget || "N/A"}</p>
+                          <p><span class="emoji">🌐</span><strong>Language:</strong> ${item.Language || "N/A"}</p>
+                      `;
 
           dashboard.appendChild(card);
         });
@@ -109,4 +116,5 @@
   </script>
 
 </body>
+
 </html>
